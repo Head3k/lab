@@ -1,0 +1,13 @@
+all: main
+
+main: src/main.o src/IntVector.o
+	gcc -Wall -I src src/IntVector.o src/main.o -o main
+
+src/main.o: src/main.c src/IntVector.h
+	gcc -Wall -I src -c src/main.c -o src/main.o
+
+src/IntVector.o: src/IntVector.c
+	gcc -Wall -I src -c src/IntVector.c -o src/IntVector.o
+
+clean:
+	rm -rf src/*.o src/main
